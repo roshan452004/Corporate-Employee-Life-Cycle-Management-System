@@ -1,50 +1,51 @@
-public class Employee{
-    private int EmployeeId;
-    private String EmployeeName;
-    private String Department;
-    private String Role;
-    private String DateOfJoining;
-    private Double Salary;
-    private String EmployeeStatus;
+package Model;
 
-    Employee(int EmployeeId,String EmployeeName,String Department,double Salary){
-        this.EmployeeId=EmployeeId;
-        this.EmployeeName=EmployeeName;
-        this.Department=Department;
-        this.Salary=Salary;
+public abstract class Employee {
+
+    protected int id;
+    protected String name;
+    protected String department;
+    protected double salary;
+    protected String status;
+
+    public Employee(int id, String name, String department, double salary) {
+        this.id = id;
+        this.name = name;
+        this.department = department;
+        this.salary = salary;
+        this.status = "Active";
     }
-    public int getEmployeeId() {
-        return EmployeeId;
-    }
-    public String getEmployeeName() {
-        return EmployeeName;
-    }
-    public String getDepartment() {
-        return Department;
+
+    public int getId() {
+        return id;
     }
     public double getSalary() {
-        return Salary;
+    return salary;
+}
+
+
+    public String getDepartment() {
+        return department;
     }
-    public void setDepartment( String Department) {
-        this.Department = Department;
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
-    public void setSalary(double Salary) {
-        this.Salary = Salary;
+
+    public void exitEmployee() {
+        this.status = "Exited";
     }
-    public void setRole( String Role) {
-        this.Role = Role;
-    }
-    public void setEmployeeStatus( String EmployeeStatus) {
-        this.EmployeeStatus = EmployeeStatus;
-    }
+
+    public abstract String getRole();
+    public abstract boolean canApproveLeave();
+
     @Override
-    public String toString(){
-        return "Employee ID "+EmployeeId+
-                ",Employee Name "+EmployeeName+
-                ",Department "+Department+
-                ",Role "+Role+
-                ",Date of Joining "+DateOfJoining+
-                ",Salary "+Salary+
-                ",Employee Status "+EmployeeStatus;
+    public String toString() {
+        return "ID=" + id +
+                ", Name=" + name +
+                ", Dept=" + department +
+                ", Role=" + getRole() +
+                ", Salary=" + salary +
+                ", Status=" + status;
     }
 }
